@@ -78,66 +78,78 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Dashboard</h1>
-        <div className="header-actions">
-          <button
-            onClick={() => setRefreshKey((k) => k + 1)}
-          >
-             Refresh
-          </button>
-          <button
-            onClick={() => {
-              setTempCity(city)
-              setTempSymbols(symbols.join(", "))
-              setIsSettingsOpen(true)
-            }}
-          >
-            ⚙ Settings
-          </button>
+        <div className="header-inner">
+          <h1>Dashboard</h1>
+          <div className="header-actions">
+            <button
+              onClick={() =>
+                setRefreshKey((k) => k + 1)
+              }
+            >
+              Refresh
+            </button>
+            <button
+              onClick={() => {
+                setTempCity(city)
+                setTempSymbols(symbols.join(", "))
+                setIsSettingsOpen(true)
+              }}
+            >
+              ⚙ Settings
+            </button>
+          </div>
         </div>
       </header>
 
-      <div className="dashboard">
-        <div className="main">
-          <div className="card">
-            <TechNews key={refreshKey} />
-          </div>
-        </div>
-
-        <div className="sidebar">
-          <div className="card weather-card">
-            <h2>Weather</h2>
-            <h3>{city}</h3>
-
-            {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
-
-            {weather && !loading && !error && (
-              <>
-                <div className="temp">
-                  {weather.current.temp_c}°C
-                </div>
-                <p>{weather.current.condition.text}</p>
-                <hr className="divider" />
-                <div className="weather-meta">
-                  <div>
-                    <strong>Humidity</strong>
-                    <span>{weather.current.humidity}%</span>
-                  </div>
-                  <div>
-                    <strong>Wind Speed</strong>
-                    <span>{weather.current.wind_kph} km/h</span>
-                  </div>
-                </div>
-              </>
-            )}
+      <div className="app-container">
+        <div className="dashboard">
+          <div className="main">
+            <div className="card">
+              <TechNews key={refreshKey} />
+            </div>
           </div>
 
-          <div className="card stock-card">
-            <StockCard
-              symbols={symbols}
-              refreshKey={refreshKey}
-            />
+          <div className="sidebar">
+            <div className="card weather-card">
+              <h2>Weather</h2>
+              <h3>{city}</h3>
+
+              {loading && <p>Loading...</p>}
+              {error && <p>{error}</p>}
+
+              {weather && !loading && !error && (
+                <>
+                  <div className="temp">
+                    {weather.current.temp_c}°C
+                  </div>
+                  <p>
+                    {weather.current.condition.text}
+                  </p>
+                  <hr className="divider" />
+                  <div className="weather-meta">
+                    <div>
+                      <strong>Humidity</strong>
+                      <span>
+                        {weather.current.humidity}%
+                      </span>
+                    </div>
+                    <div>
+                      <strong>Wind Speed</strong>
+                      <span>
+                        {weather.current.wind_kph} km/h
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="card stock-card">
+              <StockCard
+                symbols={symbols}
+                refreshKey={refreshKey}
+              />
+            </div>
           </div>
         </div>
       </div>

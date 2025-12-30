@@ -3,11 +3,9 @@ import { fetchTechNews } from "../services/newsApi"
 
 interface Article {
   title: string
-  url: string
-  source: {
-    name: string
-  }
-  publishedAt: string
+  link: string
+  source_name: string
+  pubDate: string
 }
 
 function TechNews() {
@@ -19,7 +17,12 @@ function TechNews() {
     async function loadNews() {
       try {
         const data = await fetchTechNews()
-        setArticles(data.articles)
+
+        if (data.status !== "success" || !Array.isArray(data.results)) {
+          throw new Error("Invalid response")
+        }
+
+        setArticles(data.results)
       } catch {
         setError("Could not load tech news")
       } finally {
@@ -42,9 +45,9 @@ function TechNews() {
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {articles.map((article) => (
-          <li key={article.url} className="news-item">
+          <li key={article.link} className="news-item">
             <a
-              href={article.url}
+              href={article.link}
               target="_blank"
               rel="noreferrer"
               className="news-row"
@@ -52,8 +55,8 @@ function TechNews() {
               <div>
                 <h4>{article.title}</h4>
                 <p>
-                  {article.source.name} •{" "}
-                  {new Date(article.publishedAt).toLocaleTimeString()}
+                  {article.source_name} •{" "}
+                  {new Date(article.pubDate).toLocaleTimeString()}
                 </p>
               </div>
               <span className="news-link">↗</span>
