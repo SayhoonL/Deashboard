@@ -1,9 +1,9 @@
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
-const BASE_URL = "https://newsapi.org/v2/top-headlines"
+const BASE_URL = "https://gnews.io/api/v4/top-headlines"
 
 export async function fetchTechNews() {
   const response = await fetch(
-    `${BASE_URL}?category=technology&language=en&pageSize=8&apiKey=${API_KEY}`
+    `${BASE_URL}?category=technology&lang=en&max=8&apikey=${API_KEY}`
   )
 
   if (!response.ok) {
@@ -12,3 +12,4 @@ export async function fetchTechNews() {
 
   return response.json()
 }
+
