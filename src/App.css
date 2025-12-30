@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #eef3fb;
+  color: #1f2937;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Layout */
+.dashboard {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+.main {
+  flex: 3;
+}
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Headings */
+h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+/* Weather */
+.weather-card {
+  background: #2563eb;
+  color: white;
+}
+
+.weather-card h2,
+.weather-card h3,
+.weather-card p,
+.weather-card strong {
+  color: white;
+}
+
+.temp {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  margin: 16px 0;
+}
+
+.weather-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-meta div {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+/* Stocks */
+.stock-card {
+  background: #10b981;
+  color: white;
+}
+
+.stock-card h2,
+.stock-card p,
+.stock-card strong {
+  color: white;
+}
+
+.stock-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stock-row:last-child {
+  border-bottom: none;
+}
+
+/* Tech News */
+.section-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.news-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.news-item h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.news-item p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.news-link {
+  color: #9ca3af;
+}
+
+.news-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   Settings Button
+   ========================= */
+
+.settings-button {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.settings-button:hover {
+  background: #f3f4f6;
+}
+
+/* =========================
+   Modal
+   ========================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  width: 420px;
+  max-width: 90%;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.modal-field label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+button.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    padding: 16px;
+  }
+}
