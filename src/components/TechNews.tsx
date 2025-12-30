@@ -41,24 +41,24 @@ function TechNews() {
       </p>
 
       <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {articles.map((article, index) => (
-            <li className="news-item">
+        {articles.map((article) => (
+          <li key={article.url} className="news-item">
             <a
-                href={article.url}
-                target="_blank"
-                rel="noreferrer"
-                className="news-row"
+              href={article.url}
+              target="_blank"
+              rel="noreferrer"
+              className="news-row"
             >
-                <div>
+              <div>
                 <h4>{article.title}</h4>
                 <p>
-                    {article.source.name} •{" "}
-                    {new Date(article.publishedAt).toLocaleTimeString()}
+                  {article.source.name} •{" "}
+                  {new Date(article.publishedAt).toLocaleTimeString()}
                 </p>
-                </div>
-                <span className="news-link">↗</span>
+              </div>
+              <span className="news-link">↗</span>
             </a>
-            </li>
+          </li>
         ))}
       </ul>
     </>
